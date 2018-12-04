@@ -51,6 +51,5 @@ val (ans1, ans2) =
       val strings = readFile filename
       val intList = map readInt strings
     in
-      (foldl (fn (x, y) => x + y) 0 intList,
-       firstSumRep intList)
+      (sum intList, firstSumRep intList)
     end
