@@ -49,7 +49,7 @@ fun exactly_n n = List.filter (fn (_, m) => m = n)
 
 fun has_n_repeats n lst = length (exactly_n n lst) > 0
 
-val input =
+val answer =
     let
       val filename = "input.txt"
       val charLists = ((map String.explode) o readFile) filename
