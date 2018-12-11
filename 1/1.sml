@@ -21,7 +21,7 @@ fun readInt s =
 		    else n
     end
 
-fun sum xs = foldl (fn (x, y) => x + y) 0 xs
+val sum = foldl (fn (x, y) => x + y) 0
 
 fun contains (lst: int list, x: int) =
     case lst of
