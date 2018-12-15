@@ -1,11 +1,4 @@
-fun readFile filename =
-    let
-      val file = TextIO.openIn filename
-      val content = TextIO.inputAll file
-      val _ = TextIO.closeIn file
-    in
-      String.tokens (fn c => c = #"\n") content
-    end
+use "../input.sml";
 
 datatype Dict = Leaf
 	      | Node of (char * int * Dict * Dict)
@@ -52,7 +45,7 @@ fun has_n_repeats n lst = length (exactly_n n lst) > 0
 val answer =
     let
       val filename = "input.txt"
-      val charLists = ((map String.explode) o readFile) filename
+      val charLists = ((map String.explode) o Input.readFile) filename
       val counted = map (dict_to_list o count_chars) charLists
       val hasTwoRepeats =
 	  List.filter (fn cs => has_n_repeats 2 cs) counted

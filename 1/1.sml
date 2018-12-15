@@ -1,25 +1,4 @@
-exception InvalidNumber
-
-fun readFile filename =
-    let
-      val file = TextIO.openIn filename
-      val content = TextIO.inputAll file
-      val _ = TextIO.closeIn file
-    in
-      String.tokens (fn c => c = #"\n") content
-    end
-
-fun readInt s =
-    let
-      val sign = String.sub(s, 0)
-      val v = Int.fromString(String.extract (s, 1, NONE))
-    in
-      case v of
-	  NONE => raise InvalidNumber
-	| SOME n => if sign = #"-"
-		    then ~n
-		    else n
-    end
+use "../input.sml";
 
 val sum = foldl (fn (x, y) => x + y) 0
 
@@ -48,8 +27,8 @@ fun firstSumRep xs =
 val (ans1, ans2) =
     let
       val filename = "input.txt"
-      val strings = readFile filename
-      val intList = map readInt strings
+      val strings = Input.readFile filename
+      val intList = map Input.readInt strings
     in
       (sum intList, firstSumRep intList)
     end
