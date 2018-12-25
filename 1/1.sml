@@ -1,6 +1,6 @@
 use "../input.sml";
 
-val sum = foldl (fn (x, y) => x + y) 0
+val sum = foldl op+ 0
 
 fun contains (lst: int list, x: int) =
     case lst of
